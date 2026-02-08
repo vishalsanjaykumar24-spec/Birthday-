@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Celebration</title>
+
+<style>
+  body {
+    margin: 0;
+    background: linear-gradient(160deg, #1d2671, #c33764);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow-x: hidden;
+  }
+
+  .container {
+    padding: 20px;
+    max-width: 420px;
+    margin: auto;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+  }
+
+  .slideshow {
+    width: 100%;
+    height: 280px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  }
+
+  .slideshow img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .message {
+    background: rgba(0,0,0,0.4);
+    padding: 25px;
+    border-radius: 20px;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  /* Confetti */
+  .confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    top: -10px;
+    animation: fall linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh) rotate(360deg);
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- 🎶 Background Music -->
+<audio autoplay loop>
+  <!-- 👉 Replace with your music file -->
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1>🎉 Happy Birthday <span id="personName"></span> 🎉</h1>
+
+  <!-- 📸 Slideshow -->
+  <div class="slideshow">
+    <img id="slide" src="IMG-20251007-WA0012.jpg">
+  </div>
+
+  <!-- 💌 Message -->
+  <div class="message">
+    Happy happy happiest birthday to someone who is so special.
+    The person with whom I share same interests.
+    The person on whom I have right to scold, or laugh or being mad.
+    The one who is little possessive ...
+    the one who is always there to stand with me this (touch wood)...
+    the one who cares about me.
+    This person is always into idiot things ...
+    anyway it is really nice to have a simple and good friend like you,
+    I wish you a really beautiful birthday.
+    Enjoy your day...
+    click a lot of photos..
+    and of course you are going to share them with me..
+  </div>
+</div>
+
+<script>
+  // 👉 NAME PERSONALIZATION
+  const name = "VISHAL SANJAY KUMAR";
+  document.getElementById("personName").innerText = name;
+
+  // 👉 SLIDESHOW IMAGES
+  const images = ["IMG-20251007-WA0012.jpg", "IMG-20251007-WA0012.jpg", "IMG-20251007-WA0012.jpg"];
+  let index = 0;
+  const slide = document.getElementById("slide");
+
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    slide.src = images[index];
+  }, 2500);
+
+  // 🎉 Confetti
+  const colors = ["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"];
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+    document.body.appendChild(confetti);
+  }
+</script>
+
+</body>
+</html>
